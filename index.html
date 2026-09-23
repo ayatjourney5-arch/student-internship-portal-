@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InternHub | Student Internship Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">I</div>
+        <div>
+          <strong>Intern<span>Hub</span></strong>
+          <small>Student Portal</small>
+        </div>
+      </div>
+
+      <nav>
+        <p class="nav-label">MAIN MENU</p>
+
+        <button class="nav-item active" data-section="dashboard">
+          <span>⌂</span> Dashboard
+        </button>
+
+        <button class="nav-item" data-section="internships">
+          <span>▣</span> Explore Internships
+        </button>
+
+        <button class="nav-item" data-section="applications">
+          <span>✓</span> My Applications
+        </button>
+
+        <button class="nav-item" data-section="saved">
+          <span>♡</span> Saved
+        </button>
+
+        <p class="nav-label">ACCOUNT</p>
+
+        <button class="nav-item" data-section="profile">
+          <span>◉</span> My Profile
+        </button>
+
+        <button class="nav-item" id="helpBtn">
+          <span>?</span> Help Center
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="upgrade-card">
+          <div class="sparkle">✦</div>
+          <strong>Build your career</strong>
+          <p>Find internships that match your skills.</p>
+          <button onclick="showSection('internships')">Explore Now →</button>
+        </div>
+
+        <div class="user-mini">
+          <div class="avatar">HZ</div>
+          <div>
+            <strong>Hijab Zahra</strong>
+            <small>Student</small>
+          </div>
+          <span>•••</span>
+        </div>
+      </div>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu">☰</button>
+
+        <div class="breadcrumb">
+          <span>Portal</span>
+          <b>/</b>
+          <strong id="pageTitle">Dashboard</strong>
+        </div>
+
+        <div class="top-actions">
+          <div class="search-mini">
+            <span>⌕</span>
+            <input type="text" id="globalSearch" placeholder="Search internships...">
+          </div>
+
+          <button class="notification" id="notificationBtn">
+            ♢
+            <i></i>
+          </button>
+
+          <div class="top-avatar">HZ</div>
+        </div>
+      </header>
+
+
+      <!-- DASHBOARD -->
+      <section id="dashboard" class="page-section active-section">
+
+        <div class="hero">
+          <div>
+            <span class="eyebrow">STUDENT DASHBOARD</span>
+            <h1>Welcome back, Hijab! 👋</h1>
+            <p>Discover opportunities, build experience, and take the next step in your career.</p>
+          </div>
+
+          <button class="primary-btn" onclick="showSection('internships')">
+            Explore Internships →
+          </button>
+        </div>
+
+
+        <!-- STATS -->
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <div class="stat-icon blue">▣</div>
+            <div>
+              <span>Total Internships</span>
+              <strong id="totalInternships">24</strong>
+              <small>Available opportunities</small>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon purple">↗</div>
+            <div>
+              <span>Applications</span>
+              <strong id="applicationCount">4</strong>
+              <small>Applications submitted</small>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon orange">◷</div>
+            <div>
+              <span>Under Review</span>
+              <strong id="reviewCount">2</strong>
+              <small>Awaiting response</small>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon green">✓</div>
+            <div>
+              <span>Accepted</span>
+              <strong id="acceptedCount">1</strong>
+              <small>Successful applications</small>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="content-grid">
+
+          <!-- FEATURED -->
+          <div class="panel featured-panel">
+
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">RECOMMENDED</span>
+                <h2>Featured Internships</h2>
+              </div>
+              <button class="text-btn" onclick="showSection('internships')">
+                View all →
+              </button>
+            </div>
+
+            <div class="featured-list" id="featuredList"></div>
+
+          </div>
+
+
+          <!-- APPLICATION PROGRESS -->
+          <div class="panel progress-panel">
+
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">YOUR ACTIVITY</span>
+                <h2>Application Progress</h2>
+              </div>
+            </div>
+
+            <div class="progress-circle">
+              <div>
+                <strong>60%</strong>
+                <span>Profile Complete</span>
+              </div>
+            </div>
+
+            <div class="progress-info">
+              <div>
+                <span>Profile completion</span>
+                <strong>60%</strong>
+              </div>
+              <div class="progress-bar">
+                <span></span>
+              </div>
+            </div>
+
+            <div class="profile-tip">
+              <div>✦</div>
+              <p><strong>Complete your profile</strong><br>Students with complete profiles get more opportunities.</p>
+            </div>
+
+            <button class="outline-btn" onclick="showSection('profile')">
+              Complete Profile
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- DEADLINES -->
+        <div class="panel deadlines-panel">
+
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">DON'T MISS OUT</span>
+              <h2>Upcoming Deadlines</h2>
+            </div>
+          </div>
+
+          <div class="deadline-list">
+
+            <div class="deadline">
+              <div class="company-logo purple-logo">N</div>
+              <div class="deadline-info">
+                <strong>UI/UX Design Intern</strong>
+                <span>NovaTech Solutions</span>
+              </div>
+              <div class="deadline-date">
+                <span>Deadline</span>
+                <strong>28 Sep 2026</strong>
+              </div>
+              <span class="days-left">5 days left</span>
+            </div>
+
+            <div class="deadline">
+              <div class="company-logo orange-logo">D</div>
+              <div class="deadline-info">
+                <strong>Digital Marketing Intern</strong>
+                <span>DigitalEdge</span>
+              </div>
+              <div class="deadline-date">
+                <span>Deadline</span>
+                <strong>02 Oct 2026</strong>
+              </div>
+              <span class="days-left">9 days left</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- INTERNSHIPS -->
+      <section id="internships" class="page-section">
+
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">OPPORTUNITIES</span>
+            <h1>Explore Internships</h1>
+            <p>Find opportunities that match your interests and skills.</p>
+          </div>
+        </div>
+
+        <div class="filter-box">
+
+          <div class="large-search">
+            <span>⌕</span>
+            <input id="internshipSearch" type="text" placeholder="Search by title, company or skill...">
+          </div>
+
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="Technology">Technology</option>
+            <option value="Design">Design</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Business">Business</option>
+          </select>
+
+          <select id="typeFilter">
+            <option value="all">All Types</option>
+            <option value="Remote">Remote</option>
+            <option value="On-site">On-site</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+
+        </div>
+
+        <div class="internship-grid" id="internshipGrid"></div>
+
+      </section>
+
+
+      <!-- APPLICATIONS -->
+      <section id="applications" class="page-section">
+
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">TRACK YOUR JOURNEY</span>
+            <h1>My Applications</h1>
+            <p>Keep track of every internship you've applied for.</p>
+          </div>
+        </div>
+
+        <div class="application-tabs">
+          <button class="application-tab active" data-status="all">All</button>
+          <button class="application-tab" data-status="Under Review">Under Review</button>
+          <button class="application-tab" data-status="Interview">Interview</button>
+          <button class="application-tab" data-status="Accepted">Accepted</button>
+        </div>
+
+        <div class="applications-table">
+
+          <div class="table-header">
+            <span>INTERNSHIP</span>
+            <span>COMPANY</span>
+            <span>APPLIED ON</span>
+            <span>STATUS</span>
+            <span></span>
+          </div>
+
+          <div id="applicationRows"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SAVED -->
+      <section id="saved" class="page-section">
+
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">YOUR COLLECTION</span>
+            <h1>Saved Internships</h1>
+            <p>Opportunities you've saved for later.</p>
+          </div>
+        </div>
+
+        <div class="internship-grid" id="savedGrid"></div>
+
+      </section>
+
+
+      <!-- PROFILE -->
+      <section id="profile" class="page-section">
+
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">YOUR INFORMATION</span>
+            <h1>My Profile</h1>
+            <p>Keep your profile updated to attract better opportunities.</p>
+          </div>
+
+          <button class="primary-btn" id="saveProfile">
+            Save Changes
+          </button>
+        </div>
+
+        <div class="profile-layout">
+
+          <div class="panel profile-card">
+
+            <div class="profile-cover"></div>
+
+            <div class="profile-main">
+              <div class="large-avatar">HZ</div>
+
+              <h2>Hijab Zahra</h2>
+              <p>Computer Science Student</p>
+
+              <div class="profile-location">
+                ◉ Islamabad, Pakistan
+              </div>
+
+              <div class="profile-social">
+                <span>in</span>
+                <span>GH</span>
+                <span>✉</span>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="panel profile-form">
+
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">PERSONAL DETAILS</span>
+                <h2>Edit Profile</h2>
+              </div>
+            </div>
+
+            <div class="form-grid">
+
+              <label>
+                Full Name
+                <input type="text" value="Hijab Zahra">
+              </label>
+
+              <label>
+                Email
+                <input type="email" value="student@example.com">
+              </label>
+
+              <label>
+                Education
+                <input type="text" value="FSc Pre-Medical">
+              </label>
+
+              <label>
+                Graduation Year
+                <input type="text" value="2027">
+              </label>
+
+              <label class="full">
+                Skills
+                <input type="text" value="HTML, CSS, JavaScript, UI/UX Design">
+              </label>
+
+              <label class="full">
+                About Me
+                <textarea>Motivated student interested in technology, design and digital innovation. Looking for opportunities to learn and gain practical experience.</textarea>
+              </label>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- INTERNSHIP MODAL -->
+  <div class="modal-overlay" id="internshipModal">
+
+    <div class="modal">
+
+      <button class="close-modal" id="closeModal">×</button>
+
+      <div id="modalContent"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <span>✓</span>
+    <p id="toastText">Application submitted successfully!</p>
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
